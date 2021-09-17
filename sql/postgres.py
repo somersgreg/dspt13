@@ -9,9 +9,6 @@ sqlite_curs.execute("""select * from charactercreator_character limit 5000""")
 
 characters = sqlite_curs.fetchall()
 
-conn = psycopg2.connect(dbname='ojdnleon', user='ojdnleon', password='c5RGHwLIYcEkpU5afdumQUoWUJ7dPg2E',
-                        host='chunee.db.elephantsql.com')
-
 curs = conn.cursor()
 
 for x in characters:
