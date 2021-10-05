@@ -7,7 +7,7 @@ twitter_auth = tweepy.OAuthHandler(os.environ['twitter_key'], os.environ['twitte
 twitter_api = tweepy.API(twitter_auth)
 
 
-def upsert_author(author_handle):
+def upsert_author(author_handle, spacy_model):
     twitter_author = twitter_api.get_user(user_id=author_handle)
     if Author.query.get(twitter_author.id):
         db_author = Author.query.get(twitter_author.id)
@@ -26,7 +26,8 @@ def upsert_author(author_handle):
                                                 tweet_mode='extended')
 
     for tweet in author_tweets:
-        db_tweet = Tweet(id=tweet.id, body=tweet.full_text)
+        vectorized_tweet = spacy_model(tweet.full_text).vector
+        db_tweet = Tweet(id=tweet.id, body=tweet.full_text, vect=vectorized_tweet)
         db_author.tweets.append(db_tweet)
         DB.session.add(db_tweet)
     DB.session.commit()
