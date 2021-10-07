@@ -1,1 +1,1 @@
-web: gunicorn twitter:APP -t 120 --log-file=- --log-level=debug
+herokweb: gunicorn twitter:APP -t 120 --log-file=- --log-level=debug

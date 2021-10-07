@@ -9,7 +9,7 @@ app = Flask(__name__)
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
 app.config[
     'SQLALCHEMY_DATABASE_URI'] = \
-    'sqlite:////Users/johnhurdle/Dropbox/PS/clients/Lambda/repos/dspt13/twitter/twitter_db.sqlite3'
+    'sqlite:///twitter_db.sqlite3'
 DB.init_app(app)
 
 spacy_path = pathlib.Path(pathlib.Path(__file__).parent, 'spacy_model')
