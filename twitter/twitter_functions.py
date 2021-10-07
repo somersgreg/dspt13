@@ -1,5 +1,5 @@
 import tweepy
-from data_model import DB, Tweet, Author
+from .data_model import DB, Tweet, Author
 import numpy as np
 import os
 

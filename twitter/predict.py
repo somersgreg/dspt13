@@ -1,4 +1,4 @@
-from data_model import Author
+from .data_model import Author
 import pandas as pd
 from sklearn.linear_model import LogisticRegression
 import joblib
